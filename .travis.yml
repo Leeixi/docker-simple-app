@@ -1,0 +1,14 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+node_js:
+  - node
+script:
+  - npm run test
+after_success:
+  - docker build -t "docker-test" .
+  - bash docker_push.sh
+services:
+  - docker
+
